@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  
-  def current_user
-    @user ||= User.find(:id)
-  end
+
+  # def current_user
+  #   @user ||= User.find(:id)
+  # end
 end

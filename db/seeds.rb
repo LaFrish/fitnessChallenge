@@ -9,9 +9,6 @@ User.destroy_all
 # Goal.destroy_all
 Log.destroy_all
 
-test= Log.create({ date:"",
-caloricIntake: "1", waterIntake: "1", slept: "1", workout: "1", weeklygoal: "1", weeklyweight: "1", weightlost: "1", weightgain: "1", bonusPoints: "1", totalPoints: "1", weeklyPoints: "", created_at: "", updated_at: "", user_id: "1" })
-
 Frish = User.create({firstName: "Farishta", LastName: "Haider",startWeight: "", goalWeight: "", id: "1"})
 
 Stacey= User.create({firstName: "Stacey", LastName: "Christie",startWeight: "", goalWeight: ""})
