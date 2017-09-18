@@ -1,1 +1,20 @@
 <!-- user.email, user.password, user.password_confirmation, user.name, user.username, user.challenge_id, user.created_at, user.updated_at) -->
+
+
+<%= form_for @user do |f| %>
+</br>
+<%= f.label  :firstName, "First Name" %>
+<%= f.text_field :firstName %>
+</br>
+<%= f.label  :LastName, "Last Name" %>
+<%= f.text_field :LastName %>
+</br>
+<%= f.label  :startWeight, "Start Weight" %>
+<%= f.text_field :startWeight %>
+</br>
+<%= f.label  :goalWeight, "Goal Weight" %>
+<%= f.text_field :goalWeight %>
+</br>
+
+  <%=f.submit %>
+  <% end %>

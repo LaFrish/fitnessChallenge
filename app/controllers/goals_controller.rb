@@ -2,6 +2,7 @@ class GoalsController < ApplicationController
   def index
     # @user = User.find(params[:user_id])
     @goals = Goal.all
+    # @goals = @user.goals
   end
 
   def new
@@ -12,7 +13,7 @@ class GoalsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @goal = @user.goal.create!(goal_params)
+    @goal = Goal.create!(goal_params)
 
     redirect_to user_goals_path(@user)
   end

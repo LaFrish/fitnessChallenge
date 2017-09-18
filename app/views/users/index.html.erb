@@ -1,6 +1,11 @@
 
-<#%= link_to "User", edit_user_path(@users) %>
+<%= link_to "User", users_path(@users) %>
 
-<#% end %>
-<#%= link_to "Goals", goals_index_path(@users) %>
-<!-- <#%= link_to "Miles", user_miles_path(@users) %> -->
+
+<!-- <%= link_to "Logs", user_logs_path(@users) %>
+<h1></h1> -->
+
+
+<% @users.each do |user| %>
+<button><%= link_to user.firstName, user%></button>
+<% end %>

@@ -1,0 +1,20 @@
+<h1> <%= @user.firstName %> <%= @user.LastName %> </h1>
+<p> Start Weight: <%= @user.startWeight %></p>
+<p> Goal Weight:<%= @user.goalWeight %></p>
+</br>
+<button><%=link_to "Edit Profile", edit_user_path(@user) %></button></br>
+
+<button><%=link_to "Add to Log", new_user_log_path(@user) %></button></br>
+
+<!-- </br><#%= link_to "Log Index", user_logs_path(@user) %></br> -->
+<button><%= link_to "See your Logs", user_log_path(@user) %></button></br>
+
+<!-- <#%= link_to "Add to Log", new_user_log_path(@user) %></br>
+<#%= link_to "Edit to Log", edit_user_log_path(@user) %></br> -->
+
+
+<!-- <p>Goal</p> -->
+<!-- <#%= link_to "Goal Index", user_goal_path(@user) %>
+<#%= link_to "Goal Show", user_goals_path(@user) %>
+<#%= link_to "Add to Goal", new_user_goal_path(@user) %>
+<#%= link_to "Edit to Goal", edit_user_goal_path(@user) %> -->

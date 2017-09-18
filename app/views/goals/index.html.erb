@@ -1,2 +1,5 @@
 <h1>Goals#index</h1>
-<p>Find me in app/views/goals/index.html.erb</p>
+<#%= link_to "Goals", new_user_goal_path(@goals) %>
+<#% @goals.each do |goal| %>
+<button><#%= link_to goal.firstName, goal%></button>
+<#% end %>

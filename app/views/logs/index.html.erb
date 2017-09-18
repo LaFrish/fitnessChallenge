@@ -1,2 +1,7 @@
 <h1>Logs#index</h1>
-<p></p>
+
+<% @logs.each do |log| %>
+<!-- <#%= link_to log.created_at, user_logs_path(@user, log)  %></br> -->
+<%= link_to log.date, user_log_path(@user, log) %></br>
+<% end %>
+<p>test</p>

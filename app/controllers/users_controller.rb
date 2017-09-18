@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+
   end
 
   def new
@@ -9,20 +10,25 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = current_user
     @user = User.create!(user_params)
     # if @user.save
     #   redirect_to root_url, :notice => "Signed up!"
     # else
     #   render "new"
     # end
+
   end
 
   def show
     @user = User.find(params[:id])
+    # @log = @user.logs.find(log_params[:id])
+
   end
 
   def edit
     @user = User.find(params[:id])
+
   end
 
   def update
@@ -41,8 +47,12 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(
-    :firstName, :LastName, :startWeight, :goalWeight)
+    :firstName, :LastName, :startWeight, :goalWeight, :id)
 
     # params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :challenge_id, :created_at, :updated_at)
+
   end
+  # def log_params
+  #   params.require(:log).permit(:id, :date, :weeklyLog, :dailyLog, :caloricIntake, :waterIntake, :slept, :workout, :weeklygoal, :weeklyweight, :weightlost, :weightgain, :bonusPoints, :totalPoints, :weeklyPoints, :created_at, :updated_at, :user_id)
+  # end
 end
