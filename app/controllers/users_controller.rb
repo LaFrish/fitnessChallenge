@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-before_filter :authenticate_user!, except: [:index, :show]
+# before_filter :authenticate_user!, except: [:index, :show]
 
   def index
+    @user = current_user
     @users = User.all
 
   end
@@ -13,12 +14,11 @@ before_filter :authenticate_user!, except: [:index, :show]
   def create
     @user = current_user
     @user = User.create!(user_params)
-    # if @user.save
-    #   redirect_to root_url, :notice => "Signed up!"
-    # else
-    #   render "new"
-    # end
-
+    if @user.save
+      redirect_to root_url, :notice => "Signed up!"
+    else
+      render "new"
+    end
   end
 
   def show
@@ -48,9 +48,7 @@ before_filter :authenticate_user!, except: [:index, :show]
   private
   def user_params
     params.require(:user).permit(
-    :firstName, :LastName, :startWeight, :goalWeight, :id)
-
-    # params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :challenge_id, :created_at, :updated_at)
+    :firstName, :LastName, :startWeight, :goalWeight, :id, :email, :password, :password_confirmation, :username, :created_at, :updated_at)
 
   end
   # def log_params

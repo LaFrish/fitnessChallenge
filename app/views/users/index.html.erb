@@ -1,11 +1,9 @@
-
-<%= link_to "User", users_path(@users) %>
-
-
-<!-- <%= link_to "Logs", user_logs_path(@users) %>
-<h1></h1> -->
-
-
+<h1>hi</h1>
 <% @users.each do |user| %>
 <button><%= link_to user.firstName, user%></button>
 <% end %>
+
+
+
+<%= link_to "Logs", user_logs_path(@users) %>
+<h1></h1>
