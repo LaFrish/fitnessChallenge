@@ -5,8 +5,14 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  # has_many :goals
+
   has_many :logs
+  has_many :foods
+  has_many :waters
+  has_many :sleeps
+  has_many :workouts
+  has_many :goals
+
   # attr_accessible :email, :password, :password_confirmation
 
   # attr_accessor :password

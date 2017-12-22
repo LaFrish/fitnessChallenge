@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # devise_for :users
     # devise_for :users, controllers: {
     #   sessions: 'users/sessions'
@@ -14,9 +15,15 @@ root :to => "users#index"
 
 
 
-  resources :users do
-    # resources :goals
-    resources :logs
+    resources :users do
+      resources :logs do
+      resources :goals
+      resources :foods
+      resources :workouts
+      resources :sleeps
+      resources :waters
+      # resources :goals
+    end
   end
 
 end

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sleeps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sleeps.each do |sleep| %>
+      <tr>
+        <td><%= link_to 'Show', sleep %></td>
+        <td><%= link_to 'Edit', edit_sleep_path(sleep) %></td>
+        <td><%= link_to 'Destroy', sleep, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sleep', new_sleep_path %>

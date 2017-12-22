@@ -1,39 +1,5 @@
+<h1>New Goal</h1>
 
-<%= form_for [@user, @goal] do |f| %>
+<%= render 'form', goal: @goal %>
 
-  <div class="close">
-  <i class="fa-fa-times-circle-o"></i></div>
-
-  <%= f.label :created_at, "Date" %>
-  <%= f.text_field :created_at %>
-
-<%= f.label :caloricIntake, "Calories" %>
-<%= f.text_field :caloricIntake %>
-<%= f.label  :waterIntake, "Water" %>
-<%= f.text_field :waterIntake %>
-<%= f.label  :slept, "Slept" %>
-<%= f.text_field :slept %>
-<%= f.label  :workout, "Workout" %>
-<%= f.text_field :workout %>
-<%= f.label  :weeklygoal, "<Wee></Wee>" %>
-<%= f.text_field :weeklygoal %>
-<%= f.label  :weeklyweight, "weeklyweight" %>
-<%= f.text_field :weeklyweight %>
-<%= f.label  :weightlost, "<wei></wei>" %>
-<%= f.text_field :weightlost %>
-<%= f.label  :weightgain, "weightgain" %>
-<%= f.text_field :weightgain %>
-<%= f.label  :bonusPoints, "Bonus" %>
-<%= f.text_field :bonusPoints %>
-<%= f.label  :totalPoints, "Total Points" %>
-<%= f.text_field :totalPoints %>
-<%= f.label  :weeklyPoints, "weeklyPoints" %>
-<%= f.text_field :weeklyPoints %>
-
-  <!-- <%= check_box_tag(data_type: "gif") %>
-  <%= f.label :data_type, "gif" %>
-  <%= check_box_tag(data_type: "img") %>
-  <%= f.label :data_type, "image" %> -->
-
-  <%=f.submit %>
-  <% end %>
+<%= link_to 'Back', goals_path %>

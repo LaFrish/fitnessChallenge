@@ -1,52 +1,74 @@
 class GoalsController < ApplicationController
+  before_action :set_goal, only: [:show, :edit, :update, :destroy]
+
+  # GET /goals
+  # GET /goals.json
   def index
-    # @user = User.find(params[:user_id])
     @goals = Goal.all
-    # @goals = @user.goals
   end
 
-  def new
-    @user = User.find(params[:user_id])
-    @goal = Goal.new
-
-  end
-
-  def create
-    @user = User.find(params[:user_id])
-    @goal = Goal.create!(goal_params)
-
-    redirect_to user_goals_path(@user)
-  end
-
+  # GET /goals/1
+  # GET /goals/1.json
   def show
-    @user = User.find(params[:user_id])
-    @goal = Goal.find(params[:id])
   end
 
+  # GET /goals/new
+  def new
+    @goal = Goal.new
+  end
+
+  # GET /goals/1/edit
   def edit
-    @user = User.find(params[:user_id])
-    @goal = Goal.find(params[:id])
   end
 
+  # POST /goals
+  # POST /goals.json
+  def create
+    @goal = Goal.new(goal_params)
+
+    respond_to do |format|
+      if @goal.save
+        format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
+        format.json { render :show, status: :created, location: @goal }
+      else
+        format.html { render :new }
+        format.json { render json: @goal.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /goals/1
+  # PATCH/PUT /goals/1.json
   def update
-    @user = User.find(params[:user_id])
-    @goal = Goal.find(params[:id])
-    @goal.update(goal_params)
-
-    redirect_to user_goals_path(@user)
+    respond_to do |format|
+      if @goal.update(goal_params)
+        format.html { redirect_to @goal, notice: 'Goal was successfully updated.' }
+        format.json { render :show, status: :ok, location: @goal }
+      else
+        format.html { render :edit }
+        format.json { render json: @goal.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
+  # DELETE /goals/1
+  # DELETE /goals/1.json
   def destroy
-    @user = User.find(params[:user_id])
-    @goal = Goal.find(params[:id])
     @goal.destroy
-
-    redirect_to user_goals_path(@user)
+    respond_to do |format|
+      format.html { redirect_to goals_url, notice: 'Goal was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
-  def goal_params
-    params.require(:goal).permit(:caloricIntake, :waterIntake, :slept, :workout, :weeklygoal, :weeklyweight, :weightlost, :weightgain, :bonusPoints, :totalPoints, :weeklyPoints, :created_at,:updated_at)
-    # params.require(:goal).permit(:weight, :water_intake, :daily_calories, :daily_workout)
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_goal
+      @goal = Goal.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def goal_params
+      params.fetch(:goal, {})
+    end
 end
