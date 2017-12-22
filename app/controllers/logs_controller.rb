@@ -4,21 +4,26 @@ class LogsController < ApplicationController
   # GET /logs
   # GET /logs.json
   def index
+    @user = User.find(params[:user_id])
     @logs = Log.all
   end
 
   # GET /logs/1
   # GET /logs/1.json
   def show
+    @user = User.find(params[:user_id])
+    @log = @user.logs.find(log_params[:id])
   end
 
   # GET /logs/new
   def new
+    @user = User.find(params[:user_id])
     @log = Log.new
   end
 
   # GET /logs/1/edit
   def edit
+    @user = User.find(params[:user_id])
   end
 
   # POST /logs
@@ -40,6 +45,7 @@ class LogsController < ApplicationController
   # PATCH/PUT /logs/1
   # PATCH/PUT /logs/1.json
   def update
+    @user = User.find(params[:user_id])
     respond_to do |format|
       if @log.update(log_params)
         format.html { redirect_to @log, notice: 'Log was successfully updated.' }
@@ -54,6 +60,7 @@ class LogsController < ApplicationController
   # DELETE /logs/1
   # DELETE /logs/1.json
   def destroy
+    @user = User.find(params[:user_id])
     @log.destroy
     respond_to do |format|
       format.html { redirect_to logs_url, notice: 'Log was successfully destroyed.' }
@@ -64,6 +71,7 @@ class LogsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_log
+      @user = User.find(params[:user_id])
       @log = Log.find(params[:id])
     end
 

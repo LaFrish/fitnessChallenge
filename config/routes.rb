@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     # devise_for :users, controllers: {
     #   sessions: 'users/sessions'
     # }
-devise_for :users, controllers: {registrations: "users/registrations"}
+devise_for :users, controllers: {registrations: "users/registrations", sessions: 'users/sessions'}
 
   # devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 

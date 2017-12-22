@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 # before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @user = current_user
+    # @user = current_user
     @users = User.all
 
   end
@@ -50,6 +50,9 @@ class UsersController < ApplicationController
     params.require(:user).permit(
     :firstName, :LastName, :startWeight, :goalWeight, :id, :email, :password, :password_confirmation, :username, :created_at, :updated_at)
 
+  end
+  def log_params
+    params.require(:log).permit(:id, :water, :sleep, :workout, :food)
   end
   # def log_params
   #   params.require(:log).permit(:id, :date, :weeklyLog, :dailyLog, :caloricIntake, :waterIntake, :slept, :workout, :weeklygoal, :weeklyweight, :weightlost, :weightgain, :bonusPoints, :totalPoints, :weeklyPoints, :created_at, :updated_at, :user_id)
