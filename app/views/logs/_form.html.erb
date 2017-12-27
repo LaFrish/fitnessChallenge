@@ -1,4 +1,6 @@
-<%= form_for([@user, log]) do |f| %>
+
+
+<%= form_for [@user, @log], :html => { :multipart => true,  :class => "pictureInput" } do |f| %>
   <% if log.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(log.errors.count, "error") %> prohibited this log from being saved:</h2>
@@ -11,6 +13,7 @@
     </div>
   <% end %>
 
+      <%= f.hidden_field :user_id, :value => @user.id %>
   <div class="field">
     <%= f.label :water %>
     <%= f.text_field :water %>

@@ -1,10 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Logs</h1>
-
+<div>hi
+          <% @user.logs.each do |log| %>
+          <%= log.id %>
+          <% end %>
+        </div>
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Water</th>
       <th>Sleep</th>
       <th>Workout</th>
@@ -16,23 +21,22 @@
   <tbody>
     <% @user.logs.each do |log| %>
       <tr>
+        <td><%= log.id %></td>
         <td><%= log.water %></td>
         <td><%= log.sleep %></td>
         <td><%= log.workout %></td>
         <td><%= log.food %></td>
-        <td><%= link_to 'Show', log %></td>
-        <td><%= link_to 'Edit', edit_log_path(log) %></td>
-        <td><%= link_to 'Destroy', log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_log_path(@user,log) %></td>
+        <td><%= link_to 'Edit', edit_user_log_path(@user,log) %></td>
+        <td><%= link_to 'Destroy', [@user,log],  method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-
     <% end %>
   </tbody>
 </table>
 
 <br>
-
 <%= link_to 'New Log', new_user_log_path %>
-<%= button_to "l", user_log_sleeps_path(@user, @log, @sleeps) %>
-<%= button_to "l", user_log_waters_path(@user, @log, @waters) %>
-<%= button_to "l", user_log_foods_path(@user, @log, @foods) %>
-<%= button_to "l", user_log_workouts_path(@user, @log, @workouts) %>
+<%= button_to "l", user_sleeps_path(@user, @sleeps) %>
+<%= button_to "l", user_waters_path(@user, @waters) %>
+<%= button_to "l", user_foods_path(@user, @foods) %>
+<%= button_to "l", user_workouts_path(@user, @workouts) %>

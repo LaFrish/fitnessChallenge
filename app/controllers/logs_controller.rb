@@ -21,14 +21,11 @@ class LogsController < ApplicationController
     @log = Log.new
   end
 
-  # GET /logs/1/edit
-  def edit
-    @user = User.find(params[:user_id])
-  end
 
   # POST /logs
   # POST /logs.json
   def create
+    @user = User.find(params[:user_id])
     @log = Log.new(log_params)
 
     respond_to do |format|
@@ -40,6 +37,11 @@ class LogsController < ApplicationController
         format.json { render json: @log.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /logs/1/edit
+  def edit
+    @user = User.find(params[:user_id])
   end
 
   # PATCH/PUT /logs/1
@@ -78,5 +80,10 @@ class LogsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def log_params
       params.require(:log).permit(:water, :sleep, :workout, :food)
+    end
+
+    def user_params
+      params.require(:user).permit(
+      :firstName, :LastName, :startWeight, :goalWeight, :id, :email, :password, :password_confirmation, :username, :created_at, :updated_at)
     end
 end
