@@ -5,7 +5,7 @@ class LogsController < ApplicationController
   # GET /logs.json
   def index
     @user = User.find(params[:user_id])
-    @logs = Log.all
+    @logs =@user.logs.all
   end
 
   # GET /logs/1
@@ -18,7 +18,7 @@ class LogsController < ApplicationController
   # GET /logs/new
   def new
     @user = User.find(params[:user_id])
-    @log = Log.new
+    @log = @user.logs.new
   end
 
 
@@ -26,11 +26,12 @@ class LogsController < ApplicationController
   # POST /logs.json
   def create
     @user = User.find(params[:user_id])
-    @log = Log.new(log_params)
+    # @log =  @user.logs.create!(log_params)
+    @log =  @user.logs.create!
 
     respond_to do |format|
       if @log.save
-        format.html { redirect_to @log, notice: 'Log was successfully created.' }
+        format.html { redirect_to user_logs_url, notice: 'Log was successfully created.' }
         format.json { render :show, status: :created, location: @log }
       else
         format.html { render :new }
@@ -41,7 +42,8 @@ class LogsController < ApplicationController
 
   # GET /logs/1/edit
   def edit
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
+    # @log = @user.logs.find(log_params[:id])
   end
 
   # PATCH/PUT /logs/1
@@ -50,7 +52,7 @@ class LogsController < ApplicationController
     @user = User.find(params[:user_id])
     respond_to do |format|
       if @log.update(log_params)
-        format.html { redirect_to @log, notice: 'Log was successfully updated.' }
+        format.html { redirect_to user_logs_url, notice: 'Log was successfully updated.' }
         format.json { render :show, status: :ok, location: @log }
       else
         format.html { render :edit }
@@ -63,9 +65,10 @@ class LogsController < ApplicationController
   # DELETE /logs/1.json
   def destroy
     @user = User.find(params[:user_id])
+    @log = @user.logs.find(params[:id])
     @log.destroy
     respond_to do |format|
-      format.html { redirect_to logs_url, notice: 'Log was successfully destroyed.' }
+      format.html { redirect_to user_logs_url, notice: 'Log was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -74,12 +77,12 @@ class LogsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_log
       @user = User.find(params[:user_id])
-      @log = Log.find(params[:id])
+      @log = @user.logs.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def log_params
-      params.require(:log).permit(:water, :sleep, :workout, :food)
+      params.require(:log).permit(:water, :sleep , :workout, :food, :goal)
     end
 
     def user_params

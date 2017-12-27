@@ -13,8 +13,8 @@ class CreateLogs < ActiveRecord::Migration[5.0]
       t.boolean :weeklyGoalMet
 
       t.timestamps
-      t.references :user, index: true, foreign_key: true
-      t.references :goal, index: true, foreign_key: true
+      t.references :user, index: true
+      t.references :goal, index: true
     end
   end
 end

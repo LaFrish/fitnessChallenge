@@ -9,9 +9,9 @@ class CreateWaters < ActiveRecord::Migration[5.0]
       t.integer :waterPoint
 
       t.timestamps
-      t.references :user, index: true, foreign_key: true
-      t.references :log, index: true, foreign_key: true
-      t.references :goal, index: true, foreign_key: true
+      t.references :user, index: true
+      t.references :log, index: true
+      t.references :goal, index: true
     end
   end
 end

@@ -145,21 +145,4 @@ ActiveRecord::Schema.define(version: 20171222174935) do
     t.index ["user_id"], name: "index_workouts_on_user_id", using: :btree
   end
 
-  add_foreign_key "foods", "goals"
-  add_foreign_key "foods", "logs"
-  add_foreign_key "foods", "users"
-  add_foreign_key "goals", "logs", column: "logs_id"
-  add_foreign_key "goals", "users"
-  add_foreign_key "logs", "goals"
-  add_foreign_key "logs", "users"
-  add_foreign_key "sleeps", "goals"
-  add_foreign_key "sleeps", "logs"
-  add_foreign_key "sleeps", "users"
-  add_foreign_key "users", "logs", column: "logs_id"
-  add_foreign_key "waters", "goals"
-  add_foreign_key "waters", "logs"
-  add_foreign_key "waters", "users"
-  add_foreign_key "workouts", "goals"
-  add_foreign_key "workouts", "logs"
-  add_foreign_key "workouts", "users"
 end

@@ -13,8 +13,8 @@ class CreateGoals < ActiveRecord::Migration[5.0]
       t.integer :foodGoal
       t.timestamps
 
-      t.references :user, index: true, foreign_key: true
-    
+      t.references :user, index: true
+
     end
   end
 end
