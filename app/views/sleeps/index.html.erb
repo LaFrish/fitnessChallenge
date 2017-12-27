@@ -10,7 +10,7 @@
   </thead>
 
   <tbody>
-    <% @sleeps.each do |sleep| %>
+    <% @user.sleeps.each do |sleep| %>
       <tr>
         <td><%= link_to 'Show', sleep %></td>
         <td><%= link_to 'Edit', edit_sleep_path(sleep) %></td>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Sleep', new_sleep_path %>
+<%= link_to 'New Sleep', new_user_sleep_path %>

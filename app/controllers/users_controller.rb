@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-# before_filter :authenticate_user!, except: [:index, :show]
+before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    # @user = current_user
+    @user = current_user
     @users = User.all
 
   end
@@ -12,20 +12,28 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = current_user
+    # @user = current_user
     @user = User.create!(user_params)
-    if @user.save
-      redirect_to root_url, :notice => "Signed up!"
-    else
-      render "new"
-    end
+    # if @user.save
+    #   redirect_to root_url, :notice => "Signed up!"
+    # else
+    #   render "new"
+    # end
   end
 
   def show
-    @user = User.find(params[:id])
-    # @log = @user.logs.find(log_params[:id])
 
-  end
+    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    #   respond_to do |format|
+    #       format.html
+    #       format.json{
+    #         render json: {users: render_to_string(partial: ["user"], formats: :html, collection: [@users])}
+    #       }
+    #   end
+    end
+
+  # end
 
   def edit
     @user = User.find(params[:id])

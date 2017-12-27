@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% @logs.each do |log| %>
+    <% @user.logs.each do |log| %>
       <tr>
         <td><%= log.water %></td>
         <td><%= log.sleep %></td>
@@ -24,10 +24,15 @@
         <td><%= link_to 'Edit', edit_log_path(log) %></td>
         <td><%= link_to 'Destroy', log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Log', new_log_path %>
+<%= link_to 'New Log', new_user_log_path %>
+<%= button_to "l", user_log_sleeps_path(@user, @log, @sleeps) %>
+<%= button_to "l", user_log_waters_path(@user, @log, @waters) %>
+<%= button_to "l", user_log_foods_path(@user, @log, @foods) %>
+<%= button_to "l", user_log_workouts_path(@user, @log, @workouts) %>

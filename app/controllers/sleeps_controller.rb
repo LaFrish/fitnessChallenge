@@ -4,26 +4,33 @@ class SleepsController < ApplicationController
   # GET /sleeps
   # GET /sleeps.json
   def index
+    @user = User.find(params[:user_id])
     @sleeps = Sleep.all
   end
 
   # GET /sleeps/1
   # GET /sleeps/1.json
   def show
+    @user = User.find(params[:user_id])
+    @sleep = @user.sleeps.find(sleep_params[:id])
   end
 
   # GET /sleeps/new
   def new
-    @sleep = Sleep.new
+    @user = User.find(params[:user_id])
+    @sleep = @user.sleep.new
   end
 
   # GET /sleeps/1/edit
   def edit
+    @user = User.find(params[:user_id])
+      @sleep = @user.sleeps.find(sleep_params[:id])
   end
 
   # POST /sleeps
   # POST /sleeps.json
   def create
+      @user = User.find(params[:user_id])
     @sleep = Sleep.new(sleep_params)
 
     respond_to do |format|
@@ -64,6 +71,7 @@ class SleepsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sleep
+        @user = User.find(params[:user_id])
       @sleep = Sleep.find(params[:id])
     end
 

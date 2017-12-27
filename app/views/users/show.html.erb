@@ -11,8 +11,9 @@
 
 
 
-<%= link_to "Logs", user_logs_path(@user, @logs) %>
-<h1></h1>
+<%= button_to "Logs", user_logs_path(@user, @logs) %>
+<%= button_to "Goals", user_goals_path(@user, @goals) %>
+
 
 <button><%=link_to "Edit Profile", edit_user_path(@user, @logs) %></button></br>
 
@@ -22,6 +23,8 @@
 <button><%= link_to "See your Logs", user_logs_path(@user, @logs) %></button></br>
     <% @user.logs.each do |log| %>
 <% end %>
+
+
 
 <!-- <#%= link_to "Add to Log", new_user_log_path(@user) %></br>
 <#%= link_to "Edit to Log", edit_user_log_path(@user) %></br> -->

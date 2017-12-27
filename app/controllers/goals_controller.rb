@@ -4,26 +4,33 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
+    @user = User.find(params[:user_id])
+    @goals = @user.goals.all
   end
 
   # GET /goals/1
   # GET /goals/1.json
   def show
+    @user = User.find(params[:user_id])
+    @goal = @user.goals.find(goal_params[:id])
   end
 
   # GET /goals/new
   def new
+    @user = User.find(params[:user_id])
     @goal = Goal.new
   end
 
   # GET /goals/1/edit
   def edit
+    @user = User.find(params[:user_id])
+    @goal = @user.goals.find(goal_params[:id])
   end
 
   # POST /goals
   # POST /goals.json
   def create
+    @user = User.find(params[:user_id])
     @goal = Goal.new(goal_params)
 
     respond_to do |format|
@@ -54,6 +61,7 @@ class GoalsController < ApplicationController
   # DELETE /goals/1
   # DELETE /goals/1.json
   def destroy
+    @user = User.find(params[:user_id])
     @goal.destroy
     respond_to do |format|
       format.html { redirect_to goals_url, notice: 'Goal was successfully destroyed.' }
@@ -64,6 +72,7 @@ class GoalsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_goal
+      @user = User.find(params[:user_id])
       @goal = Goal.find(params[:id])
     end
 

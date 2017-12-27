@@ -4,26 +4,34 @@ class FoodsController < ApplicationController
   # GET /foods
   # GET /foods.json
   def index
+    @user = User.find(params[:user_id])
     @foods = Food.all
+
   end
 
   # GET /foods/1
   # GET /foods/1.json
   def show
+    @user = User.find(params[:user_id])
+    @food = @user.foods.find(food_params[:id])
   end
 
   # GET /foods/new
   def new
+    @user = User.find(params[:user_id])
     @food = Food.new
   end
 
   # GET /foods/1/edit
   def edit
+    @user = User.find(params[:user_id])
+    @food = @user.foods.find(food_params[:id])
   end
 
   # POST /foods
   # POST /foods.json
   def create
+    @user = User.find(params[:user_id])
     @food = Food.new(food_params)
 
     respond_to do |format|
@@ -64,6 +72,7 @@ class FoodsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_food
+      @user = User.find(params[:user_id])
       @food = Food.find(params[:id])
     end
 

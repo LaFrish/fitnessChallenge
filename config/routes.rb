@@ -15,15 +15,18 @@ root :to => "users#index"
 
 
 
+
     resources :users do
-      resources :logs do
-      resources :goals
+      # resources :goals
+      # resources :logs do
+
       resources :foods
       resources :workouts
       resources :sleeps
       resources :waters
-      # resources :goals
-    end
+      resources :goals
+      resources :logs
+    # end
   end
 
 end
