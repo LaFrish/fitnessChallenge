@@ -1,5 +1,3 @@
-
-
 <%= form_for [@user, @log], :html => { :multipart => true,  :class => "pictureInput" } do |f| %>
   <% if log.errors.any? %>
     <div id="error_explanation">
@@ -14,6 +12,7 @@
   <% end %>
 
       <%= f.hidden_field :user_id, :value => @user.id %>
+
   <div class="field">
     <%= f.label :water %>
     <%= f.text_field :water %>

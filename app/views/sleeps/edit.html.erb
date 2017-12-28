@@ -1,6 +1,6 @@
 <h1>Editing Sleep</h1>
 
-<%= render 'form', sleep: @sleep %>
+<%= render 'form', user: @user, sleep: @sleep %>
 
-<%= link_to 'Show', @sleep %> |
-<%= link_to 'Back', sleeps_path %>
+<%= link_to 'Show', user_sleep_path(@user, @sleep) %> |
+<%= link_to 'Back', user_sleeps_path %>

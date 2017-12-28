@@ -12,9 +12,9 @@
   <tbody>
     <% @foods.each do |food| %>
       <tr>
-        <td><%= link_to 'Show', food %></td>
-        <td><%= link_to 'Edit', edit_food_path(food) %></td>
-        <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_food_path(@user, @food) %></td>
+        <td><%= link_to 'Edit', edit_user_food_path(@user, @food) %></td>
+        <td><%= link_to 'Destroy', [@user, @food], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

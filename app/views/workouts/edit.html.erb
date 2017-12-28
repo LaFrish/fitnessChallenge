@@ -1,6 +1,6 @@
 <h1>Editing Workout</h1>
 
-<%= render 'form', workout: @workout %>
+<%= render 'form', user: @user, workout: @workout %>
 
-<%= link_to 'Show', @workout %> |
-<%= link_to 'Back', workouts_path %>
+<%= link_to 'Show', user_workout_path(@user, @workout) %> |
+<%= link_to 'Back', user_workouts_path %>

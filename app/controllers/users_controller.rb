@@ -4,6 +4,11 @@ before_filter :authenticate_user!, except: [:index, :show]
   def index
     @user = current_user
     @users = User.all
+    @logs =@user.logs.all
+    @waters = @user.waters.all
+    @sleeps =  @user.sleeps.all
+    @foods =  @user.foods.all
+    @workouts =  @user.workouts.all
 
   end
 

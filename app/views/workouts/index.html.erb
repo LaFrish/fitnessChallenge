@@ -12,9 +12,9 @@
   <tbody>
     <% @workouts.each do |workout| %>
       <tr>
-        <td><%= link_to 'Show', workout %></td>
-        <td><%= link_to 'Edit', edit_workout_path(workout) %></td>
-        <td><%= link_to 'Destroy', workout, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_workout_path(@user, @workout) %></td>
+        <td><%= link_to 'Edit', edit_user_workout_path(@user, @workout) %></td>
+        <td><%= link_to 'Destroy', [@user, @workout], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

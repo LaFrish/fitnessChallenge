@@ -1,6 +1,6 @@
 <h1>Editing Water</h1>
 
-<%= render 'form', water: @water %>
+<%= render 'form', user: @user, water: @water %>
 
-<%= link_to 'Show', @water %> |
-<%= link_to 'Back', waters_path %>
+<%= link_to 'Show', user_water_path(@user, @water) %> |
+<%= link_to 'Back', user_waters_path %>

@@ -1,4 +1,4 @@
-<%= form_for(sleep) do |f| %>
+<%= form_for [@user, @sleep], :html => { :multipart => true,  :class => "pictureInput" } do |f| %>
   <% if sleep.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(sleep.errors.count, "error") %> prohibited this sleep from being saved:</h2>

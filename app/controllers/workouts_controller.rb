@@ -4,31 +4,39 @@ class WorkoutsController < ApplicationController
   # GET /workouts
   # GET /workouts.json
   def index
-    @workouts = Workout.all
+    @user = User.find(params[:user_id])
+    @workouts = @user.workouts.all
+
   end
 
   # GET /workouts/1
   # GET /workouts/1.json
   def show
+    @user = User.find(params[:user_id])
+    @workout = @user.workouts.find(workout_params[:id])
   end
 
   # GET /workouts/new
   def new
-    @workout = Workout.new
+        @user = User.find(params[:user_id])
+    @workout = @user.workouts.new
   end
 
   # GET /workouts/1/edit
   def edit
+    @user = User.find(params[:user_id])
+    @workout = @user.workouts.find(workout_params[:id])
   end
 
   # POST /workouts
   # POST /workouts.json
   def create
-    @workout = Workout.new(workout_params)
+    @user = User.find(params[:user_id])
+    @workout = @user.workouts.create!(workout_params)
 
     respond_to do |format|
       if @workout.save
-        format.html { redirect_to @workout, notice: 'Workout was successfully created.' }
+        format.html { redirect_to user_workouts_path, notice: 'Workout was successfully created.' }
         format.json { render :show, status: :created, location: @workout }
       else
         format.html { render :new }
@@ -40,9 +48,11 @@ class WorkoutsController < ApplicationController
   # PATCH/PUT /workouts/1
   # PATCH/PUT /workouts/1.json
   def update
+    @user = User.find(params[:user_id])
+    @workout = @user.workouts.find(workout_params[:id])
     respond_to do |format|
       if @workout.update(workout_params)
-        format.html { redirect_to @workout, notice: 'Workout was successfully updated.' }
+        format.html { redirect_to user_workouts_path, notice: 'Workout was successfully updated.' }
         format.json { render :show, status: :ok, location: @workout }
       else
         format.html { render :edit }
@@ -54,9 +64,11 @@ class WorkoutsController < ApplicationController
   # DELETE /workouts/1
   # DELETE /workouts/1.json
   def destroy
+    @user = User.find(params[:user_id])
+    @workout = @user.workouts.find(workout_params[:id])
     @workout.destroy
     respond_to do |format|
-      format.html { redirect_to workouts_url, notice: 'Workout was successfully destroyed.' }
+      format.html { redirect_to user_workouts_path, notice: 'Workout was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,11 +76,18 @@ class WorkoutsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_workout
-      @workout = Workout.find(params[:id])
+      @user = User.find(params[:user_id])
+      @workout = @user.workouts.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def workout_params
-      params.fetch(:workout, {})
+    # def workout_params
+    #   params.fetch(:workout, {})
+    # end
+
+
+
+    def water_params
+      params.require(:workout).permit(:id, :date, :hours, :workoutGoal, :point, :goalMet, :workoutPoint, :workoutType, :caloriesBurned, :workedoutTime, :created_at, :updated_at, :user_id)
     end
 end

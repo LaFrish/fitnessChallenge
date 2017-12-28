@@ -12,9 +12,13 @@
   <tbody>
     <% @user.sleeps.each do |sleep| %>
       <tr>
-        <td><%= link_to 'Show', sleep %></td>
-        <td><%= link_to 'Edit', edit_sleep_path(sleep) %></td>
-        <td><%= link_to 'Destroy', sleep, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td></td>
+        <td><%= sleep.id %></td>
+        <td><%= sleep.sleepPoint %></td>
+
+        <td><%= link_to 'Show', user_sleep_path(@user, @sleep) %></td>
+        <td><%= link_to 'Edit', edit_user_sleep_path(@user, @sleep) %></td>
+        <td><%= link_to 'Destroy',[@user, @sleep] , method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -10,11 +10,12 @@
   </thead>
 
   <tbody>
-    <% @waters.each do |water| %>
+    <% @users.waters.each do |water| %>
       <tr>
-        <td><%= link_to 'Show', water %></td>
-        <td><%= link_to 'Edit', edit_water_path(water) %></td>
-        <td><%= link_to 'Destroy', water, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td></td>
+        <td><%= link_to 'Show', user_water_path(@user, @water) %></td>
+        <td><#%= link_to 'Edit', edit user_waters_path(@user, @water) %></td>
+        <td><%= link_to 'Destroy', [@user, @water], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Water', new_water_path %>
+<#%= link_to 'New Water', new_water_path %>
