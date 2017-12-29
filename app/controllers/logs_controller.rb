@@ -67,8 +67,8 @@ class LogsController < ApplicationController
   # DELETE /logs/1
   # DELETE /logs/1.json
   def destroy
-    @user = User.find(params[:user_id])
-    @log = @user.logs.find(params[:id])
+    # @user = User.find(params[:user_id])
+    # @log = @user.logs.find(params[:id])
     @log.destroy
     respond_to do |format|
       format.html { redirect_to user_logs_url, notice: 'Log was successfully destroyed.' }

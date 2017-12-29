@@ -13,7 +13,7 @@ class WatersController < ApplicationController
   # GET /waters/1.json
   def show
     @user = User.find(params[:user_id])
-    @water = @user.waters.find(water_params[:id])
+    @water = @user.waters.find(params[:id])
   end
 
   # GET /waters/new
@@ -64,8 +64,8 @@ class WatersController < ApplicationController
   # DELETE /waters/1
   # DELETE /waters/1.json
   def destroy
-    @user = User.find(params[:user_id])
-    @water = @user.waters.find(water_params[:id])
+    # @user = User.find(params[:user_id])
+    # @water = @user.waters.find(water_params[:id])
     @water.destroy
     respond_to do |format|
       format.html { redirect_to user_waters_path, notice: 'Water was successfully destroyed.' }
@@ -86,7 +86,7 @@ class WatersController < ApplicationController
     #   params.fetch(:water, {:date, :waterDrank, :waterGoal, :point, :goalMet, :waterPoint})
     # end
     def water_params
-      params.require(:water).permit(:id, :date, :waterDrank, :waterGoal, :point, :goalMet, :waterPoint, :created_at, :updated_at, :user_id)
+      params.require(:water).permit(:id, :date, :waterDrank, :waterGoal, :point, :goalMet, :waterPoint, :created_at, :updated_at)
     end
 
     def log_params

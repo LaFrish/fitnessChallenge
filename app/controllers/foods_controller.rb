@@ -12,7 +12,7 @@ class FoodsController < ApplicationController
   # GET /foods/1.json
   def show
     @user = User.find(params[:user_id])
-    @food = @user.foods.find(food_params[:id])
+    @food = @user.foods.find(params[:id])
   end
 
   # GET /foods/new
@@ -24,7 +24,7 @@ class FoodsController < ApplicationController
   # GET /foods/1/edit
   def edit
     @user = User.find(params[:user_id])
-    @food = @user.foods.find(food_params[:id])
+    @food = @user.foods.find(params[:id])
   end
 
   # POST /foods
@@ -47,8 +47,8 @@ class FoodsController < ApplicationController
   # PATCH/PUT /foods/1
   # PATCH/PUT /foods/1.json
   def update
-    @user = User.find(params[:user_id])
-    @food = @user.foods.find(food_params[:id])
+    # @user = User.find(params[:user_id])
+    # @food = @user.foods.find(food_params[:id])
     respond_to do |format|
       if @food.update(food_params)
         format.html { redirect_to user_foods_path, notice: 'Food was successfully updated.' }
@@ -63,8 +63,8 @@ class FoodsController < ApplicationController
   # DELETE /foods/1
   # DELETE /foods/1.json
   def destroy
-    @user = User.find(params[:user_id])
-    @food = @user.foods.find(food_params[:id])
+    # @user = User.find(params[:user_id])
+    # @food = @user.foods.find(food_params[:id])
     @food.destroy
     respond_to do |format|
       format.html { redirect_to user_foods_path, notice: 'Food was successfully destroyed.' }
@@ -76,7 +76,7 @@ class FoodsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_food
       @user = User.find(params[:user_id])
-      @food = @user.foods.find(food_params[:id])
+      @food = @user.foods.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -85,7 +85,7 @@ class FoodsController < ApplicationController
     # end
 
     def food_params
-      params.require(:food).permit(:id, :date, :goalMet, :foodPoint , :foodGoal, :created_at , :updated_at,  :user_id)
+      params.require(:food).permit(:id, :date, :goalMet, :foodPoint , :foodGoal, :created_at , :updated_at, :user_id)
     end
 
     def log_params

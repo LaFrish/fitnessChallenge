@@ -24,7 +24,7 @@ class SleepsController < ApplicationController
   # GET /sleeps/1/edit
   def edit
     @user = User.find(params[:user_id])
-    @sleep = @user.sleeps.find(sleep_params[:id])
+    @sleep = @user.sleeps.find(params[:id])
   end
 
   # POST /sleeps
@@ -63,8 +63,8 @@ class SleepsController < ApplicationController
   # DELETE /sleeps/1
   # DELETE /sleeps/1.json
   def destroy
-    @user = User.find(params[:user_id])
-    @sleep = @user.sleeps.find(sleep_params[:id])
+    # @user = User.find(params[:user_id])
+    # @sleep = @user.sleeps.find(sleep_params[:id])
     @sleep.destroy
     respond_to do |format|
       format.html { redirect_to user_sleeps_path, notice: 'Sleep was successfully destroyed.' }

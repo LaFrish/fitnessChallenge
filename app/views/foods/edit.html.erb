@@ -3,4 +3,4 @@
 <%= render 'form', user: @user, food: @food %>
 
 <%= link_to 'Show', user_food_path(@user, @food) %> |
-<%= link_to 'Back', user_foods_path %>
+<%= link_to 'Back', user_foods_path(@user, @food) %>

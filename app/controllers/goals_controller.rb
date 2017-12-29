@@ -63,8 +63,8 @@ class GoalsController < ApplicationController
   # DELETE /goals/1
   # DELETE /goals/1.json
   def destroy
-    @user = User.find(params[:user_id])
-    @goal = @user.goals.find(goal_params[:id])
+    # @user = User.find(params[:user_id])
+    # @goal = @user.goals.find(goal_params[:id])
     @goal.destroy
     respond_to do |format|
       format.html { redirect_to user_goals_path, notice: 'Goal was successfully destroyed.' }

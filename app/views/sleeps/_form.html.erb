@@ -10,7 +10,23 @@
       </ul>
     </div>
   <% end %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
+      <div class="field">
+      <%= f.label :goalMet %>
+      <%= f.text_field :goalMet %>
+      </div>
 
+      <div class="field">
+      <%= f.label :sleepPoint %>
+      <%= f.text_field :sleepPoint %>
+      </div>
+
+      <div class="field">
+      <%= f.label :sleepGoal %>
+      <%= f.text_field :sleepGoal %>
+      </div>
+
+      
   <div class="actions">
     <%= f.submit %>
   </div>

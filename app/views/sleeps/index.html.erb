@@ -5,6 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th>Sleep id</th>
+      <th>Sleep goalMet</th>
+      <th>Sleep Point</th>
+      <th>Sleep Goal</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,11 +18,12 @@
       <tr>
         <td></td>
         <td><%= sleep.id %></td>
+        <td><%= sleep.goalMet %></td>
         <td><%= sleep.sleepPoint %></td>
-
-        <td><%= link_to 'Show', user_sleep_path(@user, @sleep) %></td>
-        <td><%= link_to 'Edit', edit_user_sleep_path(@user, @sleep) %></td>
-        <td><%= link_to 'Destroy',[@user, @sleep] , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= sleep.sleepGoal %></td>
+        <td><%= link_to 'Show', user_sleep_path(@user, sleep) %></td>
+        <td><%= link_to 'Edit', edit_user_sleep_path(@user, sleep) %></td>
+        <td><%= link_to 'Destroy',[@user, sleep] , method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,3 +32,4 @@
 <br>
 
 <%= link_to 'New Sleep', new_user_sleep_path %>
+<%= link_to 'Back', user_path(@user) %>

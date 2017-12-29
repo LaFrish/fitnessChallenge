@@ -10,6 +10,47 @@
       </ul>
     </div>
   <% end %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
+
+      <div class="field">
+      <%= f.label :goalMet %>
+      <%= f.text_field :goalMet %>
+      </div>
+
+      <div class="field">
+      <%= f.label :workoutPoint %>
+      <%= f.text_field :workoutPoint %>
+      </div>
+
+      <div class="field">
+      <%= f.label :points %>
+      <%= f.text_field :points %>
+      </div>
+
+      <div class="field">
+      <%= f.label :workoutGoal %>
+      <%= f.text_field :workoutGoal %>
+      </div>
+
+      <div class="field">
+      <%= f.label :hours %>
+      <%= f.text_field :hours %>
+      </div>
+
+      <div class="field">
+      <%= f.label :workoutType %>
+      <%= f.text_field :workoutType %>
+      </div>
+
+      <div class="field">
+      <%= f.label :workoutTime %>
+      <%= f.text_field :workoutTime %>
+      </div>
+
+      <div class="field">
+      <%= f.label :caloriesBurned %>
+      <%= f.text_field :caloriesBurned %>
+      </div>
 
   <div class="actions">
     <%= f.submit %>

@@ -5,16 +5,25 @@
 <table>
   <thead>
     <tr>
+      <th>food.id</th>
+      <th>food.goalMet</th>
+      <th>food.foodPoint</th>
+      <th>food.foodGoal</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @foods.each do |food| %>
+    <% @user.foods.each do |food| %>
       <tr>
-        <td><%= link_to 'Show', user_food_path(@user, @food) %></td>
-        <td><%= link_to 'Edit', edit_user_food_path(@user, @food) %></td>
-        <td><%= link_to 'Destroy', [@user, @food], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td></td>
+        <td><%= food.id %></td>
+        <td><%= food.goalMet %></td>
+        <td><%= food.foodPoint %></td>
+        <td><%= food.foodGoal %></td>
+        <td><%= link_to 'Show', user_food_path(@user, food) %></td>
+        <td><%= link_to 'Edit', edit_user_food_path(@user, food) %></td>
+        <td><%= link_to 'Destroy', [@user, food], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +31,5 @@
 
 <br>
 
-<%= link_to 'New Food', new_food_path %>
+<%= link_to 'New Food', new_user_food_path %>
+<%= link_to 'Back', user_path(@user) %>

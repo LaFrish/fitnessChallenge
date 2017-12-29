@@ -5,16 +5,31 @@
 <table>
   <thead>
     <tr>
+      <th>workout goalMet</th>
+      <th>workout workoutPoint</th>
+      <th>workout points</th>
+      <th>workout workoutGoal</th>
+      <th>workout hours</th>
+      <th>workout workoutType</th>
+      <th>workout workoutTime</th>
+      <th>workout caloriesBurned</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @workouts.each do |workout| %>
+    <% @user.workouts.each do |workout| %>
       <tr>
-        <td><%= link_to 'Show', user_workout_path(@user, @workout) %></td>
-        <td><%= link_to 'Edit', edit_user_workout_path(@user, @workout) %></td>
-        <td><%= link_to 'Destroy', [@user, @workout], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= workout.goalMet %></td>
+        <td><%= workout.workoutPoint %></td>
+        <td><%= workout.points %></td>
+        <td><%= workout.workoutGoal %></td>
+        <td><%= workout.hours %></td>
+        <td><%= workout.workoutType %></td>
+        <td><%= workout.workoutTime %></td>
+        <td><%= workout.caloriesBurned %></td>
+        <td><%= link_to 'Show', user_workout_path(@user, workout) %></td>
+        <td><%= link_to 'Edit', edit_user_workout_path(@user, workout) %></td>
+        <td><%= link_to 'Destroy', [@user, workout], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +37,5 @@
 
 <br>
 
-<%= link_to 'New Workout', new_workout_path %>
+<%= link_to 'New Workout', new_user_workout_path %>|
+<%= link_to 'Back', user_path(@user) %>

@@ -13,26 +13,26 @@ class WorkoutsController < ApplicationController
   # GET /workouts/1.json
   def show
     @user = User.find(params[:user_id])
-    @workout = @user.workouts.find(workout_params[:id])
+    @workout = @user.workouts.find(params[:id])
   end
 
   # GET /workouts/new
   def new
         @user = User.find(params[:user_id])
-    @workout = @user.workouts.new
+        @workout = @user.workouts.new
   end
 
   # GET /workouts/1/edit
   def edit
     @user = User.find(params[:user_id])
-    @workout = @user.workouts.find(workout_params[:id])
+    @workout = @user.workouts.find(params[:id])
   end
 
   # POST /workouts
   # POST /workouts.json
   def create
     @user = User.find(params[:user_id])
-    @workout = @user.workouts.create!(workout_params)
+    @workout = @user.workouts.new
 
     respond_to do |format|
       if @workout.save
@@ -48,8 +48,8 @@ class WorkoutsController < ApplicationController
   # PATCH/PUT /workouts/1
   # PATCH/PUT /workouts/1.json
   def update
-    @user = User.find(params[:user_id])
-    @workout = @user.workouts.find(workout_params[:id])
+    # @user = User.find(params[:user_id])
+    # @workout = @user.workouts.find(workout_params[:id])
     respond_to do |format|
       if @workout.update(workout_params)
         format.html { redirect_to user_workouts_path, notice: 'Workout was successfully updated.' }
@@ -64,8 +64,8 @@ class WorkoutsController < ApplicationController
   # DELETE /workouts/1
   # DELETE /workouts/1.json
   def destroy
-    @user = User.find(params[:user_id])
-    @workout = @user.workouts.find(workout_params[:id])
+    # @user = User.find(params[:user_id])
+    # @workout = @user.workouts.find(workout_params[:id])
     @workout.destroy
     respond_to do |format|
       format.html { redirect_to user_workouts_path, notice: 'Workout was successfully destroyed.' }
@@ -87,7 +87,7 @@ class WorkoutsController < ApplicationController
 
 
 
-    def water_params
+    def workout_params
       params.require(:workout).permit(:id, :date, :hours, :workoutGoal, :point, :goalMet, :workoutPoint, :workoutType, :caloriesBurned, :workedoutTime, :created_at, :updated_at, :user_id)
     end
 end

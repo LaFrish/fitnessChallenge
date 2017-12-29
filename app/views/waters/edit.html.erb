@@ -3,4 +3,4 @@
 <%= render 'form', user: @user, water: @water %>
 
 <%= link_to 'Show', user_water_path(@user, @water) %> |
-<%= link_to 'Back', user_waters_path %>
+<%= link_to 'Back', user_waters_path(@user, @water) %>
