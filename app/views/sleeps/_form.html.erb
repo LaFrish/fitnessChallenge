@@ -1,0 +1,33 @@
+<%= form_for [@user, @sleep], :html => { :multipart => true,  :class => "pictureInput" } do |f| %>
+  <% if sleep.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sleep.errors.count, "error") %> prohibited this sleep from being saved:</h2>
+
+      <ul>
+      <% sleep.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
+      <div class="field">
+      <%= f.label :goalMet %>
+      <%= f.text_field :goalMet %>
+      </div>
+
+      <div class="field">
+      <%= f.label :sleepPoint %>
+      <%= f.text_field :sleepPoint %>
+      </div>
+
+      <div class="field">
+      <%= f.label :sleepGoal %>
+      <%= f.text_field :sleepGoal %>
+      </div>
+
+      
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

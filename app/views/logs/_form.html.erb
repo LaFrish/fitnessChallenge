@@ -1,0 +1,39 @@
+<%= form_for [@user, @log], :html => { :multipart => true,  :class => "pictureInput" } do |f| %>
+  <% if log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(log.errors.count, "error") %> prohibited this log from being saved:</h2>
+
+      <ul>
+      <% log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+      <%= f.hidden_field :user_id, :value => @user.id %>
+
+  <div class="field">
+    <%= f.label :water %>
+    <%= f.text_field :water %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sleep %>
+    <%= f.text_field :sleep %>
+  </div>
+
+  <div class="field">
+    <%= f.label :workout %>
+    <%= f.text_field :workout %>
+  </div>
+
+  <div class="field">
+    <%= f.label :food %>
+    <%= f.text_field :food %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

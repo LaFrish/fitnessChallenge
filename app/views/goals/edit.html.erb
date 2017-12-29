@@ -1,2 +1,6 @@
-<h1>Logs#edit</h1>
-<p></p>
+<h1>Editing Goal</h1>
+
+<%= render 'form', user: @user, goal: @goal %>
+
+<%= link_to 'Show', user_goal_path(@user, @goal) %> |
+<%= link_to 'Back', user_goals_path %>

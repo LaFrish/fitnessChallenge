@@ -1,0 +1,58 @@
+<%= form_for [@user, @workout], :html => { :multipart => true,  :class => "pictureInput" } do |f| %>
+  <% if workout.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(workout.errors.count, "error") %> prohibited this workout from being saved:</h2>
+
+      <ul>
+      <% workout.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
+
+      <div class="field">
+      <%= f.label :goalMet %>
+      <%= f.text_field :goalMet %>
+      </div>
+
+      <div class="field">
+      <%= f.label :workoutPoint %>
+      <%= f.text_field :workoutPoint %>
+      </div>
+
+      <div class="field">
+      <%= f.label :points %>
+      <%= f.text_field :points %>
+      </div>
+
+      <div class="field">
+      <%= f.label :workoutGoal %>
+      <%= f.text_field :workoutGoal %>
+      </div>
+
+      <div class="field">
+      <%= f.label :hours %>
+      <%= f.text_field :hours %>
+      </div>
+
+      <div class="field">
+      <%= f.label :workoutType %>
+      <%= f.text_field :workoutType %>
+      </div>
+
+      <div class="field">
+      <%= f.label :workoutTime %>
+      <%= f.text_field :workoutTime %>
+      </div>
+
+      <div class="field">
+      <%= f.label :caloriesBurned %>
+      <%= f.text_field :caloriesBurned %>
+      </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

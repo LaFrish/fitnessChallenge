@@ -1,24 +1,21 @@
 class Log < ApplicationRecord
   belongs_to :user
+  has_many :foods
+  has_many :waters
+  has_many :sleeps
+  has_many :workouts
+  has_many :goals
 
-# before_create :set_start_date
-# before_save :validate_date
 
-#   def next
-#   self.class.where("id > ?", id).first
-# end
-#
-# def previous
-#   self.class.where("id < ?", id).last
-# end
-private
-    # def set_start_date
-    #   self.start_date = Date.current.strftime("%Y-%m-%d")
-    # end
-#
-#   def validate_date
-#   return true unless date > Date.current
-#   return false
-# end
+  accepts_nested_attributes_for :goals, :allow_destroy => true
+  accepts_nested_attributes_for :workouts, :allow_destroy => true
+  accepts_nested_attributes_for :waters, :allow_destroy => true
+  accepts_nested_attributes_for :foods, :allow_destroy => true
+  accepts_nested_attributes_for :sleeps, :allow_destroy => true
 
+
+
+  def log_id
+    log_id = @log.id
+  end
 end

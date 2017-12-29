@@ -1,0 +1,29 @@
+<%= form_for [@user, @food], :html => { :multipart => true,  :class => "pictureInput" } do |f| %>
+  <% if food.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(food.errors.count, "error") %> prohibited this food from being saved:</h2>
+
+      <ul>
+      <% food.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.hidden_field :user_id, :value => @user.id %>
+          <%= f.label :goalMet %>
+          <%= f.text_field :goalMet %>
+          </div>
+
+          <div class="field">
+          <%= f.label :foodPoint %>
+          <%= f.text_field :foodPoint %>
+          </div>
+
+          <div class="field">
+          <%= f.label :foodGoal %>
+          <%= f.text_field :foodGoal %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

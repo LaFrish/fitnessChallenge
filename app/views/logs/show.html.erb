@@ -1,41 +1,24 @@
-<h1>logs#show</h1>
-<%= @log.date %>
+<p id="notice"><%= notice %></p>
 
-<%= @log.created_at %>
+<p>
+  <strong>Water:</strong>
+  <%= @log.water %>
+</p>
 
-</br>
-<%= @log.caloricIntake %>
+<p>
+  <strong>Sleep:</strong>
+  <%= @log.sleep %>
+</p>
 
-</br>
-<%= @log.waterIntake %>
+<p>
+  <strong>Workout:</strong>
+  <%= @log.workout %>
+</p>
 
-</br>
-<%= @log.slept %>
+<p>
+  <strong>Food:</strong>
+  <%= @log.food %>
+</p>
 
-</br>
-<%= @log.workout %>
-
-</br>
-<%= @log.weeklygoal %>
-
-</br>
-<%= @log.weeklyweight %>
-
-</br>
-<%= @log.weightlost %>
-
-</br>
-<%= @log.weightgain %>
-
-</br>
-<%= @log.bonusPoints %>
-
-</br>
-<%= @log.totalPoints %>
-
-</br>
-<%= @log.weeklyPoints %>
-
-</br>
-<p>test</p>
-<%= link_to "Edit to Log", edit_user_log_path(@user) %></br>
+<%= link_to 'Edit', edit_user_log_path(@log) %> |
+<%= link_to 'Back', user_logs_path %>

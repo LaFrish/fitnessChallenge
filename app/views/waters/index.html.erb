@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Waters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Water id</th>
+      <th>Water waterDrank</th>
+      <th>Water Point</th>
+      <th>Water waterPoint</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.waters.each do |water| %>
+      <tr>
+        <td><%= water.id %></td>
+        <td><%= water.waterDrank %></td>
+        <td><%= water.point %></td>
+        <td><%= water.waterPoint %></td>
+        <td><%= link_to 'Show', user_water_path(@user, water) %></td>
+        <td><%= link_to 'Edit', edit_user_water_path(@user, water) %></td>
+        <td><%= link_to 'Destroy', [@user, water], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Water', new_user_water_path %>
+<%= link_to 'Back', user_path(@user) %>

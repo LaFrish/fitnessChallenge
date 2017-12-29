@@ -1,9 +1,9 @@
-<h1>hi</h1>
+<!-- <h1>hi</h1> -->
 <% @users.each do |user| %>
-<button><%= link_to user.firstName, user%></button>
+<button>
+
+
+<%= button_to user.firstName, user_path(user),
+    :class => "progress-bar btnFont", :id =>"addMeal", :role => "progress-striped", :method => :get %>
+  </button>
 <% end %>
-
-
-
-<%= link_to "Logs", user_logs_path(@users) %>
-<h1></h1>

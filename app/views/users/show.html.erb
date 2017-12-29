@@ -1,20 +1,178 @@
 <h1> <%= @user.firstName %> <%= @user.LastName %> </h1>
-<p> Start Weight: <%= @user.startWeight %></p>
-<p> Goal Weight:<%= @user.goalWeight %></p>
-</br>
-<button><%=link_to "Edit Profile", edit_user_path(@user) %></button></br>
+  <p> Start Weight: <%= @user.startWeight %></p>
+  <p> Goal Weight:<%= @user.goalWeight %></p>
 
-<button><%=link_to "Add to Log", new_user_log_path(@user) %></button></br>
+  <button><%=link_to "Edit Profile", edit_user_path(@user, @logs) %></button></br>
+    </br><%= button_to "Logs", user_logs_path(@user, @logs) %>
+  <%= button_to "Goals", user_goals_path(@user, @goals) %>
+  <%= button_to "Sleeps", user_sleeps_path(@user, @sleeps) %>
+  <%= button_to "Foods", user_foods_path(@user, @foods) %>
+  <%= button_to "Waters", user_waters_path(@user, @waters) %>
+  <%= button_to "Workouts", user_workouts_path(@user, @workouts) %>
+  <%= button_to "Logs", user_logs_path(@user, @logs) %>
 
-<!-- </br><#%= link_to "Log Index", user_logs_path(@user) %></br> -->
-<button><%= link_to "See your Logs", user_log_path(@user) %></button></br>
+  </br><%= link_to "Log Index", user_logs_path(@user) %></br>
+  <button><%= link_to "See your Logs", user_logs_path(@user, @logs) %></button></br>
+      <% @user.logs.each do |log| %>
+  <% end %>
 
-<!-- <#%= link_to "Add to Log", new_user_log_path(@user) %></br>
-<#%= link_to "Edit to Log", edit_user_log_path(@user) %></br> -->
 
+<h1>Sleeps</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Sleep id</th>
+          <th>Sleep goalMet</th>
+          <th>Sleep Point</th>
+          <th>Sleep Goal</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<!-- <p>Goal</p> -->
-<!-- <#%= link_to "Goal Index", user_goal_path(@user) %>
-<#%= link_to "Goal Show", user_goals_path(@user) %>
-<#%= link_to "Add to Goal", new_user_goal_path(@user) %>
-<#%= link_to "Edit to Goal", edit_user_goal_path(@user) %> -->
+      <tbody>
+        <% @user.sleeps.each do |sleep| %>
+          <tr>
+            <td></td>
+            <td><%= sleep.id %></td>
+            <td><%= sleep.goalMet %></td>
+            <td><%= sleep.sleepPoint %></td>
+            <td><%= sleep.sleepGoal %></td>
+            <td><%= link_to 'Show', user_sleep_path(@user, sleep) %></td>
+            <td><%= link_to 'Edit', edit_user_sleep_path(@user, sleep) %></td>
+            <td><%= link_to 'Destroy',[@user, sleep] , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <button><%=link_to "New Sleep", new_user_sleep_path(@user, @sleeps) %></button></br>
+<h1>Waters</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Water id</th>
+          <th>Water waterDrank</th>
+          <th>Water Point</th>
+          <th>Water waterPoint</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @user.waters.each do |water| %>
+          <tr>
+            <td><%= water.id %></td>
+            <td><%= water.waterDrank %></td>
+            <td><%= water.point %></td>
+            <td><%= water.waterPoint %></td>
+            <td><%= link_to 'Show', user_water_path(@user, water) %></td>
+            <td><%= link_to 'Edit', edit_user_water_path(@user, water) %></td>
+            <td><%= link_to 'Destroy', [@user, water], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+    <button><%=link_to "Add New Water", new_user_water_path(@user, @waters) %></button></br>
+<h1>Foods</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>food.id</th>
+          <th>food.goalMet</th>
+          <th>food.foodPoint</th>
+          <th>food.foodGoal</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.foods.each do |food| %>
+          <tr>
+
+            <td></td>
+            <td><%= food.id %></td>
+            <td><%= food.goalMet %></td>
+            <td><%= food.foodPoint %></td>
+            <td><%= food.foodGoal %></td>
+            <td><%= link_to 'Show', user_food_path(@user, food) %></td>
+            <td><%= link_to 'Edit', edit_user_food_path(@user, food) %></td>
+            <td><%= link_to 'Destroy', [@user, food], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+    <button><%=link_to "Add Food", new_user_food_path(@user, @foods) %></button></br>
+<h1>Workouts</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>workout id</th>
+          <th>workout goalMet</th>
+          <th>workout workoutPoint</th>
+          <th>workout points</th>
+          <th>workout workoutGoal</th>
+          <th>workout hours</th>
+          <th>workout workoutType</th>
+          <th>workout workoutTime</th>
+          <th>workout caloriesBurned</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.workouts.each do |workout| %>
+          <tr>
+            <td><%= workout.id %></td>
+            <td><%= workout.goalMet %></td>
+            <td><%= workout.workoutPoint %></td>
+            <td><%= workout.points %></td>
+            <td><%= workout.workoutGoal %></td>
+            <td><%= workout.hours %></td>
+            <td><%= workout.workoutType %></td>
+            <td><%= workout.workoutTime %></td>
+            <td><%= workout.caloriesBurned %></td>
+            <td><%= link_to 'Show', user_workout_path(@user, workout) %></td>
+            <td><%= link_to 'Edit', edit_user_workout_path(@user, workout) %></td>
+            <td><%= link_to 'Destroy', [@user, workout], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <button><%=link_to "New Workout", new_user_workout_path(@user, @workouts) %></button></br>
+<h1>Logs</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Water</th>
+          <th>Sleep</th>
+          <th>Workout</th>
+          <th>Food</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @user.logs.each do |log| %>
+          <tr>
+            <td><%= log.id %></td>
+            <td><%= log.water %></td>
+            <td><%= log.sleep %></td>
+            <td><%= log.workout %></td>
+            <td><%= log.food %></td>
+            <td><%= link_to 'Show', user_log_path(@user,log) %></td>
+            <td><%= link_to 'Edit', edit_user_log_path(@user,log) %></td>
+            <td><%= link_to 'Destroy', [@user,log],  method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <button><%=link_to "Add to Log", new_user_log_path(@user, @logs) %></button></br>
+<h1>Goals</h1>
+  <!-- <p>Goal</p> -->
+  <!-- <#%= link_to "Goal Index", user_goal_path(@user) %>
+  <#%= link_to "Goal Show", user_goals_path(@user) %>
+  <#%= link_to "Add to Goal", new_user_goal_path(@user) %>
+  <#%= link_to "Edit to Goal", edit_user_goal_path(@user) %> -->

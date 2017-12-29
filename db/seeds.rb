@@ -10,10 +10,14 @@ User.destroy_all
 Log.destroy_all
 
 
-Frish = User.create({firstName: "Farishta", LastName: "Haider",startWeight: "194", goalWeight: "130", email: "farishta.haider@gmail.com", password: "superman", password_confirmation: "superman", username: "LaFrish", created_at: "", updated_at:""})
+Frish = User.create({firstName: "Farishta", LastName: "Haider",startWeight: "194", goalWeight: "130", email: "farishta.haider@gmail.com", password: "superman", password_confirmation: "superman", username: "LaFrish", created_at: "", updated_at:"", id: 1})
 
-Stacey= User.create({firstName: "Stacey", LastName: "Christie", email: "stacey@gmail.com", password: "superman", password_confirmation: "superman" })
+Stacey= User.create({firstName: "Stacey", LastName: "Christie", email: "stacey@gmail.com", password: "superman", password_confirmation: "superman",id: 2 })
 
+Flog = Log.create({water: 1, sleep: 1, workout: 1, food:1 , user_id: 1})
+
+ Slog = Log.create({water: 1, sleep: 1, workout: 2, food:1 , user_id: 2})
+ # Flog2 = User.log.create({id: 20, water: 2, sleep: 1, workout: 1, food:1 , user_id: 7})
 # Brandi= User.create({firstName: "Brandi", LastName: "",startWeight: "", goalWeight: ""})
 #
 # Sarah= User.create({firstName: "Sarah", LastName: "Butts",startWeight: "", goalWeight: ""})

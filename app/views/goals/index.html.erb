@@ -1,5 +1,26 @@
-<h1>Goals#index</h1>
-<#%= link_to "Goals", new_user_goal_path(@goals) %>
-<#% @goals.each do |goal| %>
-<button><#%= link_to goal.firstName, goal%></button>
-<#% end %>
+<p id="notice"><%= notice %></p>
+
+<h1>Goals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @goals.each do |goal| %>
+      <tr>
+        <td><%= link_to 'Show', user_goal_path(@user, @goal) %></td>
+        <td><%= link_to 'Edit', edit_user_goal_path(@user, @goal) %></td>
+        <td><%= link_to 'Destroy', [@user, @goal], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Goal', user_new_goal_path %>
+<%= link_to 'Back', user_path(@user) %>

@@ -1,57 +1,6 @@
-<h1>Logs#edit</h1>
+<h1>Editing Log</h1>
 
-<%= form_for [@user, @log] do |f| %>
+<%= render 'form', user: @user, log: @log %>
 
-  <div class="close">
-  <i class="fa-fa-times-circle-o"></i></div>
-  <%= f.label :created_at, "Created" %>
-  <%= f.text_field :created_at %>
-  </br>
-    <%= f.label :date, "Date" %>
-  <%= select_date Date.today, prefix: :start_date %>
-
-  <!-- <#%= f.text_field :date %> -->
-  </br>
-
-  <%= f.label :caloricIntake, "Calories" %>
-  <%= check_box_tag :caloricIntake, value="1"  %>
-  <!-- <#%= f.text_field :caloricIntake %> -->
-  </br>
-  <%= f.label  :waterIntake, "Water" %>
-  <!-- <#%= f.text_field :waterIntake %> -->
-  <%= check_box_tag :waterIntake, value="1" %>
-  </br>
-  <%= f.label  :slept, "Slept" %>
-  <%= check_box_tag  :slept, value="1" %>
-  <!-- <#%= f.text_field :slept %> -->
-  </br>
-  <%= f.label  :workout, "Workout" %>
-  <!-- <#%= f.text_field :workout %> -->
-  <%= check_box_tag :workout, value="1"  %>
-  </br>
-  <%= f.label  :weeklygoal, "Weekly Goal" %>
-  <!-- <#%= f.text_field :weeklygoal %> -->
-  <%= check_box_tag :weeklygoal, value="1"  %>
-  </br>
-  <%= f.label  :weeklyweight, "weeklyweight" %>
-  <%= f.text_field :weeklyweight %>
-  </br>
-  <%= f.label  :weightlost, "weight lost" %>
-  <%= f.text_field :weightlost %>
-  </br>
-  <%= f.label  :weightgain, "weightgain" %>
-  <%= f.text_field :weightgain %>
-  </br>
-  <%= f.label  :bonusPoints, "Bonus" %>
-  <%= f.text_field :bonusPoints %>
-  </br>
-  <%= f.label  :totalPoints, "Total Points" %>
-  <%= f.text_field :totalPoints %>
-  </br>
-  <%= f.label  :weeklyPoints, "weeklyPoints" %>
-  <%= f.text_field :weeklyPoints %>
-  </br>
-
-
-  <%=f.submit %>
-  <% end %>
+<%= link_to 'Show', user_log_path(@user, @log) %> |
+<%= link_to 'Back', user_logs_path(@user, @log) %>
