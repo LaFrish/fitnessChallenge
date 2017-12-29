@@ -109,6 +109,7 @@
     <table>
       <thead>
         <tr>
+          <th>workout id</th>
           <th>workout goalMet</th>
           <th>workout workoutPoint</th>
           <th>workout points</th>
@@ -123,6 +124,7 @@
       <tbody>
         <% @user.workouts.each do |workout| %>
           <tr>
+            <td><%= workout.id %></td>
             <td><%= workout.goalMet %></td>
             <td><%= workout.workoutPoint %></td>
             <td><%= workout.points %></td>
