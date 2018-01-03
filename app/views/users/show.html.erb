@@ -176,3 +176,5 @@
   <#%= link_to "Goal Show", user_goals_path(@user) %>
   <#%= link_to "Add to Goal", new_user_goal_path(@user) %>
   <#%= link_to "Edit to Goal", edit_user_goal_path(@user) %> -->
+
+    <%= react_component 'User', { data: @user} %>

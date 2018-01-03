@@ -1,9 +1,3 @@
-<!-- <h1>hi</h1> -->
-<% @users.each do |user| %>
-<button>
-
-
-<%= button_to user.firstName, user_path(user),
-    :class => "progress-bar btnFont", :id =>"addMeal", :role => "progress-striped", :method => :get %>
-  </button>
-<% end %>
+<%= javascript_pack_tag 'application' %>
+<h1>users#index</h1>
+  <%= react_component( 'Users', { data: @users} )%>
